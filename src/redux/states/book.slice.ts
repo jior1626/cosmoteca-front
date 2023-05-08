@@ -7,12 +7,14 @@ import { getItemLocalStorage, setItemLocalStorage } from "../../utils/helper";
 
 export interface BooksState {
     books: Book[];
+    q: string;
     error: string;
     bookCreated: boolean;
 }
 
 export const initialState: BooksState = {
     books: [],
+    q: "",
     bookCreated: false,
     error: "",
 }
@@ -29,6 +31,9 @@ const BookSlice = createSlice({
                 setItemLocalStorage("books", payload.books);
                 state.books = payload.books;
             }
+        },
+        filterBooks: (state, {payload}: PayloadAction<string>) => {
+            state.books = state.books.filter(item => item.name.search(payload))
         },
         addBook: (state, {payload}: PayloadAction<Book>) => {
             state.books = [...state.books, {...payload}];
@@ -50,7 +55,7 @@ const BookSlice = createSlice({
     }
 })
 
-export const { getBooks, addBook, updateBook, deleteBookById } = BookSlice.actions
+export const { getBooks, filterBooks, addBook, updateBook, deleteBookById } = BookSlice.actions
 
 export const booksSelector = (state: RootState) => state.books
 
