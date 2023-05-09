@@ -16,6 +16,7 @@ import { Book } from '../../models/book';
 import { deleteBookInFavorities } from '../../redux/states/book.slice';
 
 
+// Interface Component
 interface BookInterface {
     book: Book,
     favorities?: boolean

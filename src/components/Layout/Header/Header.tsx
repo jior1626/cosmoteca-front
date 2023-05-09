@@ -1,7 +1,9 @@
-
 import React from "react";
 
+// Styles 
 import "./Header.css";
+
+// Components
 import Search from "../../Search/Search";
 import Navbar from "../Navbar/Navbar";
 

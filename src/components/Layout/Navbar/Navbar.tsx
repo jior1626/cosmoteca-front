@@ -1,20 +1,15 @@
 
 import React, {useState} from "react";
-
-import "./Navbar.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+
+// Assets and styles
+import "./Navbar.css";
 import logoImg from "../../../assets/images/logo.png";
 
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container } from "react-bootstrap";
+// Libraries components
+import { Navbar, Nav, Container } from "react-bootstrap";
 
-interface NavbarInterface {
-    children?: React.ReactNode;
-}
-const NavbarMenu: React.FC<NavbarInterface> = ({children}) => {
-
-    const [toggleMenu, setToggleMenu] = useState(false);
-    const handleNavbar = () => setToggleMenu(!toggleMenu);
-
+const NavbarMenu = () => {
     return (
         <>
             <Navbar  bg="light" expand="lg">

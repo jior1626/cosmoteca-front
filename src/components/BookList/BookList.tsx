@@ -1,13 +1,20 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useEffect } from "react";
 import "./BookList.css";
+
+// Models
+import { Book } from "../../models/book";
+
+// Redux
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { booksSelector, setBooksInStorage } from "../../redux/states/book.slice";
-import GoogleBooksService from "../../utils/API";
 import { loadingSelector, setLoading } from "../../redux/states/loading.slice";
-import BookInfo from "./Book";
-import { Book } from "../../models/book";
+
+// Components
 import Loader from "../Loader/Loader";
+import BookInfo from "./Book";
+
+// Google service
+import GoogleBooksService from "../../utils/API";
 
 const BookList = () => {
 

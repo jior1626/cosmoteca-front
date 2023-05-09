@@ -1,15 +1,19 @@
-import React, {useRef, useState, useEffect} from "react";
+import React, {useState} from "react";
 import "./Search.css";
+
+// Redux
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { setBooksInStorage } from "../../redux/states/book.slice";
 import { setLoading } from "../../redux/states/loading.slice";
+
+// Libraries
+import { FaSearch } from "react-icons/fa";
+
+// Service Google Books
 import GoogleBooksService from "../../utils/API";
 
 
-import { FaSearch } from "react-icons/fa";
-
-
-const Search: React.FC<any> = ({ }) => {
+const Search = () => {
 
     const [filter, setFilter] = useState("the lost world");
 
