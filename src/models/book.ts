@@ -34,11 +34,11 @@ interface VolumeInfo {
 
 export interface Book {
     accessInfo?: any,
-    salesInfo?: any,
-    searchInfo?: any,
-    selfLink?: any,
     etag?: string,
     id?: string,
     kind?: string,
+    salesInfo?: any,
+    searchInfo?: any,
+    selfLink?: string,
     volumeInfo?: VolumeInfo
 }

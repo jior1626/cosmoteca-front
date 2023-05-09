@@ -5,7 +5,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 import "./Search.css";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { booksSelector, setBooksInStorage } from "../../redux/states/book.slice";
+import { setBooksInStorage } from "../../redux/states/book.slice";
 import { setLoading } from "../../redux/states/loading.slice";
 import GoogleBooksService from "../../utils/API";
 

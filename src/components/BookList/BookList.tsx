@@ -4,15 +4,18 @@ import "./BookList.css";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { booksSelector, setBooksInStorage } from "../../redux/states/book.slice";
 import GoogleBooksService from "../../utils/API";
-import { setLoading } from "../../redux/states/loading.slice";
+import { loadingSelector, setLoading } from "../../redux/states/loading.slice";
 import BookInfo from "./Book";
 import { Book } from "../../models/book";
+import Loader from "../Loader/Loader";
 
 const BookList = () => {
 
     const dispatch = useAppDispatch();
 
     const { books, q } = useAppSelector(booksSelector);
+
+    const { isLoading } = useAppSelector(loadingSelector);
 
     const loadBooks = async () => {
         await dispatch(setLoading(true));
@@ -24,6 +27,8 @@ const BookList = () => {
     useEffect(() => {
         loadBooks()
     }, [])
+
+    if(isLoading) return <Loader />;
 
     return (
         <>
