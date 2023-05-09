@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import "./BookDetail.css";
 
 // Components and more
 import Loader from "../Loader/Loader";
-import { FaArrowLeft } from "react-icons/fa";
+
 import { Book } from "../../models/book";
 import coverImg from "../../assets/images/cover_not_found.jpg";
-import "./BookDetail.css";
+import { Row, Button } from "react-bootstrap"
+import { FaArrowLeft } from "react-icons/fa";
 
 // Redux
-import { useAppSelector } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { loadingSelector, setLoading } from "../../redux/states/loading.slice";
 
 // Services
 import GoogleBooksService from "../../utils/API";
+import { addFavorities } from "../../redux/states/book.slice";
 
 const BookDetail = () => {
 
@@ -22,6 +25,8 @@ const BookDetail = () => {
     const [book, setBook] = useState<Book>({});
 
     const { isLoading } = useAppSelector(loadingSelector);
+
+    const dispath = useAppDispatch();
 
     const navigate = useNavigate();
 
@@ -36,14 +41,17 @@ const BookDetail = () => {
                 } else {
                     setBook({});
                 }
-                setLoading(false);
+                await setLoading(false);
             }
         } catch (error) {
             console.log(error);
-            setLoading(false);
+            await setLoading(false);
         }
     }
 
+    const addFavority = async (book: Book) => {
+        await dispath(addFavorities(book));
+    } 
 
     useEffect(() => {
         searchBook();
@@ -61,7 +69,7 @@ const BookDetail = () => {
 
                 <div className='book-details-content grid'>
                     <div className='book-details-img'>
-                    <img src={book.volumeInfo?.imageLinks?.thumbnail ? book.volumeInfo?.imageLinks?.thumbnail : coverImg} alt="cover img" />
+                        <img src={book.volumeInfo?.imageLinks?.thumbnail ? book.volumeInfo?.imageLinks?.thumbnail : coverImg} alt="cover img" />
                     </div>
                     <div className='book-details-info'>
                         <div className='book-details-item title'>
@@ -87,7 +95,11 @@ const BookDetail = () => {
                             <span className='fw-6'>Rating: </span>
                             <span className='text-italic'>{book.volumeInfo?.averageRating}</span>
                         </div>
+                        <Row>
+                            <Button onClick={() => addFavority(book)} size="lg" variant="outline-primary">Add Favorities</Button>
+                        </Row>
                     </div>
+                    
                 </div>
             </div>
         </section>

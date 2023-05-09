@@ -41,7 +41,7 @@ const BookList = () => {
                         {
                             books.slice(0, 50).map((item: Book, index) => {
                                 return (
-                                    <BookInfo key={index} book={item} />
+                                    <BookInfo key={index} book={item} favorities={false} />
                                 )
                             })
                         }

@@ -8,15 +8,15 @@ import { responseGoogleBooksApi } from "../../models/response";
 
 export interface BooksState {
     books: Book[];
+    favorities: Book[];
     q: string;
     error: string;
-    bookCreated: boolean;
 }
 
 export const initialState: BooksState = {
     books: [],
+    favorities: [],
     q: "the lost world",
-    bookCreated: false,
     error: "",
 }
 
@@ -25,30 +25,22 @@ const BookSlice = createSlice({
     initialState,
     reducers: {
         setBooksInStorage: (state, { payload }: PayloadAction<responseGoogleBooksApi>) => {
-            // let booksInLocalStorage = getItemLocalStorage("books");
-            // if (booksInLocalStorage && booksInLocalStorage.length > 0) {
-            //     state.books = booksInLocalStorage;
-            // } else {
-                setItemLocalStorage("books", payload.items);
-                state.books = payload.items;
-            // }
+            setItemLocalStorage("books", payload.items);
+            state.books = payload.items;
         },
-        // filterBooks: (state, { payload }: PayloadAction<string>) => {
-        //     state.q = payload;
-        // },
-        addBook: (state, { payload }: PayloadAction<Book>) => {
-            state.books = [...state.books, { ...payload }];
-            state.bookCreated = true;
-            // setItemLocalStorage("books", state.books);
+        getFavorities: (state) => {
+            state.favorities = getItemLocalStorage("favorities");
         },
-        updateBook: (state, { payload }: PayloadAction<Book>) => {
-            let bookFill = state.books.filter(item => item.id !== payload.id);
-            state.books = [...bookFill, payload];
-            // setItemLocalStorage("books", state.books);
+        addFavorities: (state, { payload }: PayloadAction<Book>) => {
+            let find = state.favorities.find(item => item.id == payload.id)
+            if (!find) {
+                state.favorities = [...state.favorities, { ...payload }];
+            }
+            setItemLocalStorage("favorities", state.favorities);
         },
-        deleteBookById: (state, { payload }: PayloadAction<string>) => {
-            state.books = state.books.filter(item => item.id != payload);
-            // setItemLocalStorage("books", state.books);
+        deleteBookInFavorities: (state, { payload }: PayloadAction<string>) => {
+            state.favorities = state.favorities.filter(item => item.id != payload);
+            setItemLocalStorage("favorities", state.favorities);
         },
         error: (state, { payload }: PayloadAction<string>) => {
             state.error = payload;
@@ -56,7 +48,7 @@ const BookSlice = createSlice({
     }
 })
 
-export const { setBooksInStorage, addBook, updateBook, deleteBookById } = BookSlice.actions
+export const { setBooksInStorage, addFavorities, deleteBookInFavorities, error } = BookSlice.actions
 
 export const booksSelector = (state: RootState) => state.books
 
