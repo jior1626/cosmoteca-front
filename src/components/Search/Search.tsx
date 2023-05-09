@@ -1,13 +1,12 @@
 import React, {useRef, useState, useEffect} from "react";
-import { useNavigate } from "react-router-dom";
-
-import { Container, Row, Col } from "react-bootstrap";
-
 import "./Search.css";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { setBooksInStorage } from "../../redux/states/book.slice";
 import { setLoading } from "../../redux/states/loading.slice";
 import GoogleBooksService from "../../utils/API";
+
+
+import { FaSearch } from "react-icons/fa";
 
 
 const Search: React.FC<any> = ({ }) => {
@@ -32,7 +31,7 @@ const Search: React.FC<any> = ({ }) => {
                         <div className='search-form-elem flex flex-sb bg-white'>
                             <input type="text" className='form-control' placeholder='The Lost World ...' onChange={(e) => setFilter(e.target.value)} />
                             <button type="submit" className='flex flex-c' onClick={handleSubmit}>
-                                {/* <FaSearch className='text-purple' size={32} /> */}
+                                <FaSearch className='text-purple' size={32} />
                             </button>
                         </div>
                     </form>
