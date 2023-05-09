@@ -1,25 +1,27 @@
-import React, {useRef, useState} from "react";
+import React, {useRef, useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Container, Row, Col } from "react-bootstrap";
 
 import "./Search.css";
-import { useAppDispatch } from "../../redux/hooks";
-import { filterBooks } from "../../redux/states/book.slice";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { booksSelector, setBooksInStorage } from "../../redux/states/book.slice";
 import { setLoading } from "../../redux/states/loading.slice";
+import GoogleBooksService from "../../utils/API";
 
 
 const Search: React.FC<any> = ({ }) => {
 
-    const [filter, setFilter] = useState("");
+    const [filter, setFilter] = useState("the lost world");
 
     const dispatch = useAppDispatch();
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         await dispatch(setLoading(true));
-        await dispatch(filterBooks(filter));
-        await dispatch(setLoading(false));
+        const response = await GoogleBooksService.search(filter);
+        await dispatch(setBooksInStorage(response))
+        await dispatch(setLoading(false))
     }
 
     return (

@@ -1,5 +1,5 @@
 export function getItemLocalStorage(item: string) {
-    let data = localStorage.getItem(item);
+    let data = localStorage.getItem(item) ? localStorage.getItem(item) : "[]";
     if (data) {
         return JSON.parse(data);
     } else {

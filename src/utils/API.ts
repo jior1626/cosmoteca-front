@@ -1,7 +1,11 @@
 import axios from "axios";
+import { GOOGLE_BOOKS } from "./constants";
+import { responseGoogleBooksApi } from "../models/response";
 
-export default {
-    search: function(query: any) {
-        return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + query);
+const GoogleBooksService = {
+    search: async function(query: any) {
+        return await axios.get<responseGoogleBooksApi>(`${GOOGLE_BOOKS.server}/books/v1/volumes?q=${query}`).then(response => response.data);
     }
 };
+
+export default GoogleBooksService;
