@@ -70,17 +70,22 @@ const BookDetail = () => {
                         <div className='book-details-item description'>
                             <span>{book.volumeInfo?.description ? book.volumeInfo?.description : ""}</span>
                         </div>
+                        
                         <div className='book-details-item'>
-                            <span className='fw-6'>Subject Places: </span>
-                            <span className='text-italic'>{}</span>
+                            <span className='fw-6'>Published Date:  </span>
+                            <span className='text-italic'>{book.volumeInfo?.publishedDate}</span>
                         </div>
                         <div className='book-details-item'>
-                            <span className='fw-6'>Subject Times: </span>
-                            <span className='text-italic'>{}</span>
+                            <span className='fw-6'>Publisher: </span>
+                            <span>{book.volumeInfo?.publisher}</span>
                         </div>
                         <div className='book-details-item'>
-                            <span className='fw-6'>Subjects: </span>
-                            <span>{}</span>
+                            <span className='fw-6'>Pages: </span>
+                            <span className='text-italic'>{book.volumeInfo?.pageCount}</span>
+                        </div>
+                        <div className='book-details-item'>
+                            <span className='fw-6'>Rating: </span>
+                            <span className='text-italic'>{book.volumeInfo?.averageRating}</span>
                         </div>
                     </div>
                 </div>
