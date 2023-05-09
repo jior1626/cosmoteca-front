@@ -1,0 +1,88 @@
+.brand-and-toggler{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-around;
+}
+
+.title-page {
+    margin-left: 2rem;
+    margin-top: 0.5rem;
+}
+
+.nav-link {
+    margin-right: 1rem !important;
+    margin-left: 1rem !important;
+}
+
+/* .navbar{
+    padding: 1.8rem 0 !important;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px !important;
+}
+.navbar-brand{
+    width: 90px !important;
+}
+.navbar-brand span{
+    margin-left: 2rem !important;
+}
+
+.navbar-content{
+    display: flex !important;
+    width: 100% !important;
+}
+.navbar-toggler-btn{
+    transition: var(--transition) !important;
+    z-index: 11 !important;
+}
+.navbar-collapse{
+    position: fixed !important;
+    right: 0 !important;
+    top: 0 !important;
+    z-index: 10 !important;
+    background-color: var(--black-color) !important;
+    height: 100% !important;
+    width: 280px !important;
+    display: flex !important;
+    padding: 10rem 3rem 0 3rem !important;
+    transform: translatex(100%) !important;
+    transition: var(--transition) !important;
+}
+.show-navbar-collapse{
+    transform: translateX(0) !important;
+}
+.nav-item{
+    margin-bottom: 1.4rem !important;
+}
+.nav-link{
+    transition: var(--transition) !important;
+}
+.nav-link:hover{
+    color: var(--purple-color) !important;
+} */
+
+/* @media screen and (min-width: 992px){
+    .navbar-collapse{
+        position: relative !important;
+        height: auto !important;
+        padding: 0 !important;
+        width: 100% !important;
+        background-color: transparent !important;
+        transform: translateX(0) !important;
+        justify-content: flex-end !important;
+    }
+    .navbar-toggler-btn{
+        display: none !important;
+    }
+    .nav-item{
+        margin-bottom: 0 !important;
+        margin-left: 2.8rem !important;
+    }
+    .nav-link{
+        color: var(--black-color) !important;
+        font-size: 1.7rem !important;
+        font-weight: 500 !important;
+        opacity: 0.8 !important;
+    }
+    .navbar-nav{
+        display: flex !important;
+    }
+} */
