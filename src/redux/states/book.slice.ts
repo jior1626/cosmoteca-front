@@ -32,14 +32,14 @@ const BookSlice = createSlice({
             state.favorities = getItemLocalStorage("favorities");
         },
         addFavorities: (state, { payload }: PayloadAction<Book>) => {
-            let find = state.favorities.find(item => item.id == payload.id)
+            let find = state.favorities.find(item => item.id === payload.id)
             if (!find) {
                 state.favorities = [...state.favorities, { ...payload }];
             }
             setItemLocalStorage("favorities", state.favorities);
         },
         deleteBookInFavorities: (state, { payload }: PayloadAction<string>) => {
-            state.favorities = state.favorities.filter(item => item.id != payload);
+            state.favorities = state.favorities.filter(item => item.id !== payload);
             setItemLocalStorage("favorities", state.favorities);
         },
         error: (state, { payload }: PayloadAction<string>) => {

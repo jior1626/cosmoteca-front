@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import "./Search.css";
 
 // Redux
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppDispatch } from "../../redux/hooks";
 import { setBooksInStorage } from "../../redux/states/book.slice";
 import { setLoading } from "../../redux/states/loading.slice";
 
